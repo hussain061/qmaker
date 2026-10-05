@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iMaster Quotation Maker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>iMaster</h1>
+      <p>Quotation Maker · 7700420</p>
+    </div>
+    <div class="header-actions">
+      <button id="newBtn" class="btn ghost" type="button">New</button>
+      <button id="saveBtn" class="btn ghost" type="button">Save Draft</button>
+      <button id="printBtn" class="btn secondary" type="button">Print</button>
+      <button id="pdfBtn" class="btn primary" type="button">Download PDF</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="panel form-panel">
+      <div class="section-title">
+        <div><span class="eyebrow">QUOTATION</span><h2>Customer & document details</h2></div>
+        <span id="saveStatus" class="status">Ready</span>
+      </div>
+
+      <div class="grid two">
+        <label>Quotation number
+          <input id="quoteNo" type="text" placeholder="e.g. Q-2026-001">
+        </label>
+        <label>Date
+          <input id="quoteDate" type="date">
+        </label>
+        <label>Customer name
+          <input id="customerName" type="text" placeholder="Customer or company name">
+        </label>
+        <label>Contact number
+          <input id="customerContact" type="text" placeholder="Phone number">
+        </label>
+      </div>
+      <label>Customer address
+        <textarea id="customerAddress" rows="2" placeholder="Address (optional)"></textarea>
+      </label>
+
+      <div class="items-heading">
+        <div><span class="eyebrow">LINE ITEMS</span><h2>Products and services</h2></div>
+        <button id="addItemBtn" class="btn secondary" type="button">+ Add item</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Description</th><th>Qty</th><th>Unit price</th><th>Total</th><th></th></tr></thead>
+          <tbody id="itemsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="bottom-grid">
+        <label>Terms and conditions
+          <textarea id="terms" rows="5">1. This quotation is valid for 14 days.
+2. Payment terms are subject to agreement.
+3. Goods sold are subject to availability.</textarea>
+        </label>
+        <div class="totals-card">
+          <div><span>Subtotal</span><strong id="subtotal">MVR 0.00</strong></div>
+          <div><span>GST (8%)</span><strong id="gst">MVR 0.00</strong></div>
+          <div class="grand"><span>Grand total</span><strong id="grandTotal">MVR 0.00</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quotation" class="quote-sheet" aria-label="Quotation preview">
+      <div class="quote-top">
+        <div class="brand"><div class="logo">iM</div><div><h2>iMaster</h2><p>Contact: 7700420</p></div></div>
+        <div class="quote-meta"><h1>QUOTATION</h1><p><b>No:</b> <span data-preview="quoteNo">-</span></p><p><b>Date:</b> <span data-preview="quoteDate">-</span></p></div>
+      </div>
+      <div class="bill-to"><span>BILL TO</span><h3 data-preview="customerName">Customer name</h3><p data-preview="customerContact"></p><p data-preview="customerAddress"></p></div>
+      <table class="preview-table"><thead><tr><th>#</th><th>Description</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr></thead><tbody id="previewItems"></tbody></table>
+      <div class="preview-lower">
+        <div class="terms-view"><h4>Terms & Conditions</h4><p data-preview="terms"></p></div>
+        <div class="preview-totals"><div><span>Subtotal</span><b id="pSubtotal">MVR 0.00</b></div><div><span>GST (8%)</span><b id="pGst">MVR 0.00</b></div><div class="grand"><span>Grand Total</span><b id="pGrand">MVR 0.00</b></div></div>
+      </div>
+      <div class="signature"><div class="signature-line"></div><p>Authorized Signature</p></div>
+      <footer>Thank you for choosing iMaster.</footer>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
